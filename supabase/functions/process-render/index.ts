@@ -179,8 +179,10 @@ Deno.serve(async (req) => {
   if (authError || !user) return new Response(JSON.stringify({ error: 'Unauthorized' }), { status: 401, headers: corsHeaders })
 
   const body = await req.json()
+  console.log('request body keys:', Object.keys(body))
   const {
-    prompt,
+    prompt: promptField,
+    description,
     negative_prompt,
     model = 'fal-ai/flux/dev',
     width = 1920,
@@ -199,6 +201,10 @@ Deno.serve(async (req) => {
     typology,
     strength,
   } = body
+
+  // accept 'description' as alias for 'prompt' (Lovable may use different field name)
+  const prompt = promptField ?? description ?? body.text ?? body.query
+  console.log('prompt received:', prompt)
 
   if (!prompt) return new Response(JSON.stringify({ error: 'prompt is required' }), { status: 400, headers: corsHeaders })
 
