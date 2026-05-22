@@ -8,8 +8,9 @@ const corsHeaders = {
 
 // credit packs: price_id -> credits amount (configure in Stripe dashboard)
 const CREDIT_PACKS: Record<string, number> = {
-  // map your Stripe price IDs here, e.g.:
-  // 'price_abc123': 100,
+  'price_1TZh8oGepZ6oe09q9DZej1L5': 50,   // Pack 50 créditos — R$19
+  'price_1TZhAdGepZ6oe09q3SIKcap6': 200,  // Pack 200 créditos — R$49
+  'price_1TZhB1GepZ6oe09qB7j9AC94': 500,  // Pack 500 créditos — R$99
 }
 
 Deno.serve(async (req) => {

@@ -3,13 +3,15 @@ import Stripe from 'https://esm.sh/stripe@14?target=deno'
 
 // credit amounts per Stripe price ID — keep in sync with create-checkout
 const CREDIT_PACKS: Record<string, number> = {
-  // 'price_abc123': 100,
+  'price_1TZh8oGepZ6oe09q9DZej1L5': 50,   // Pack 50 créditos — R$19
+  'price_1TZhAdGepZ6oe09q3SIKcap6': 200,  // Pack 200 créditos — R$49
+  'price_1TZhB1GepZ6oe09qB7j9AC94': 500,  // Pack 500 créditos — R$99
 }
 
 // monthly credits per plan price ID
 const PLAN_CREDITS: Record<string, { plan: string; credits: number; render_limit: number }> = {
-  // 'price_starter_monthly': { plan: 'starter', credits: 50, render_limit: 50 },
-  // 'price_pro_monthly': { plan: 'pro', credits: 200, render_limit: 200 },
+  'price_1TZh5FGepZ6oe09qD1UYevQw': { plan: 'starter', credits: 50,  render_limit: 50  },  // Starter — R$19/mês
+  'price_1TZh8GGepZ6oe09qDpCOde5K': { plan: 'pro',     credits: 200, render_limit: 200 },  // Pro — R$49/mês
 }
 
 Deno.serve(async (req) => {
