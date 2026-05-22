@@ -54,18 +54,14 @@ supabase secrets set FAL_API_KEY=... STRIPE_SECRET_KEY=... STRIPE_WEBHOOK_SECRET
 supabase functions logs process-render --tail
 ```
 
-## Preços Stripe a configurar
+## Preços Stripe (test mode — BRL)
 
-Em `stripe-webhook/index.ts` e `create-checkout/index.ts`, mapeie seus price IDs do Stripe:
+| Price ID | Produto | Tipo | Valor | Créditos |
+|---|---|---|---|---|
+| `price_1TZh5FGepZ6oe09qD1UYevQw` | Renderize Starter | Assinatura mensal | R$19 | 50/mês |
+| `price_1TZh8GGepZ6oe09qDpCOde5K` | Renderize Pro | Assinatura mensal | R$49 | 200/mês |
+| `price_1TZh8oGepZ6oe09q9DZej1L5` | Pack 50 créditos | Compra única | R$19 | 50 |
+| `price_1TZhAdGepZ6oe09q3SIKcap6` | Pack 200 créditos | Compra única | R$49 | 200 |
+| `price_1TZhB1GepZ6oe09qB7j9AC94` | Pack 500 créditos | Compra única | R$99 | 500 |
 
-```ts
-const CREDIT_PACKS = {
-  'price_xxx': 100,   // pacote 100 créditos
-  'price_yyy': 500,   // pacote 500 créditos
-}
-
-const PLAN_CREDITS = {
-  'price_starter_monthly': { plan: 'starter', credits: 50, render_limit: 50 },
-  'price_pro_monthly':     { plan: 'pro',     credits: 200, render_limit: 200 },
-}
-```
+Esses IDs já estão mapeados em `stripe-webhook/index.ts` e `create-checkout/index.ts`.
